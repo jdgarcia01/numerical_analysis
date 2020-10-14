@@ -2,12 +2,9 @@
 #include <math.h>
 #include <stdlib.h>
 
-
-
 double func(double x){
 
 	return (x*x - 6);
-
 }
 
 int main(){
@@ -19,7 +16,7 @@ int main(){
 	double p0 = 3;
 	double p1 = 2;
 	double p;
-	double TOL = 1.0e-5;
+	double TOL = 1.0e-6;
 
 	printf("TOL is %lf\n",TOL);
 
