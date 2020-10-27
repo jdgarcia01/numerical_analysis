@@ -1,43 +1,33 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
-
-double func(double x){
-
-	return (x*x - 6);
+#include<stdio.h>
+float f(float x)
+{
+    return(x*x-6); // f(x)= x^2 - 6
 }
-
-int main(){
-
-	int i = 2;
-	double q0;
-	double q1;
-	int N0 = 10;
-	double p0 = 3;
-	double p1 = 2;
-	double p;
-	double TOL = 1.0e-6;
-
-	printf("TOL is %lf\n",TOL);
-
-	 q0 = func(1);
-	 q1 = func(0);
-	while(i <= N0){
-	 	p = p1 - q1 *(p1 - p0)/(q1 - q0);
-
-		if( fabs(p - p1) < TOL){
-			printf("Output is: %lf\n",p);
-			exit(0);
-		}
-		i += 1;
-		p0 = p1;
-		q0 = q1;
-		p1 = p;
-		q1 = func(p);
-
-	}
-	
-
-
+float main()
+{
+    float a,b,c,d,e;
+    int count=1,n;
+    printf("\n\nEnter the values of a and b:\n"); //(a,b) must contain the solution.
+    scanf("%f%f",&a,&b);
+    printf("Enter the values of allowed error and maximun number of iterations:\n");
+    scanf("%f %d",&e,&n);
+    do
+    {
+        if(f(a)==f(b))
+        {
+            printf("\nSolution cannot be found as the values of a and b are same.\n");
+        return;
+        }
+        c=(a*f(b)-b*f(a))/(f(b)-f(a));
+        a=b;
+        b=c;
+        printf("Iteration No-%d    x=%f\n",count,c);
+        count++;
+        if(count==n)
+        {
+        break;
+        }
+    } while(fabs(f(c))>e);
+    printf("\n The required solution is %f\n",c);
+ 
 }
-

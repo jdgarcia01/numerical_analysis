@@ -13,6 +13,7 @@ double i = 0;
 double FA = 0;
 int N0 = 1000;
 double FP = 0;
+
 void bisection(double a,double b){
 
 	if(func(a) * func(b) >= 0)
