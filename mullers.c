@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 double func(double x){
 
@@ -8,26 +9,34 @@ double func(double x){
 
 int main(){
 
-	int N0 = 20;
-	//printf("Number of iterations: \n");
-	//scanf("%d\n",&N0);
+	int N0 = 0;
+	printf("Number of iterations:");
+	scanf("%d",&N0);
 
 	double p;
-	double p0 = 0.5;
+	double p0;
+	printf("p0: ");
+	scanf("%lf",&p0);
+	
+	double p1; 
+	printf("p1: ");
+	scanf("%lf",&p1);
 
-	double p1 = -0.5; 
-	double p2 = 0; 
+	double p2; 
+	printf("p2: ");
+	scanf("%lf",&p2);
 
+	// Set the error threshold.
 	double TOL = pow(10,-5);
 	printf("Tolerance is: %lf\n", TOL);
 
 	double h1 = p1 - p0;
 	double h2 = p2 - p1;
-	double h;
+	double h = 0;
 
-	double delta1 = (func(p1) - func(p2))/h1;
-        double delta2 = (func(p2) - func(p2))/h2;
-	double d = (delta2 - delta1)/(h2 - h1);
+	double delta1 = (func(p1) - func(p0))/h1;
+        double delta2 = (func(p2) - func(p1))/h2;
+	double d = (delta2 - delta1)/(h2 + h1);
 	int i = 3;
 	double b;
 	double D;
@@ -44,10 +53,11 @@ int main(){
 		}
 		h = (-2 * func(p2)) / E;
 		p = p2 + h;
-		
+		printf("%lf\n", p );
+
 		if( fabs(h) < TOL){
 			printf("OUTPUT: %lf\n", p);
-			break;
+			exit(EXIT_SUCCESS);
 		}
 		p0 = p1;
 		p1 = p2;

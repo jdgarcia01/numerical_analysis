@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <math.h>
+
 
 float func(float x, float y){
 
 	float f;
-	f = x + y;
+	f = (x - y)/(x + y);
 
 	return f;
 
@@ -25,7 +27,7 @@ int main(){
 	{
 		k = h * func(x,y);
 		y = y + k;
-		x = x+ h;
+		x = x + h;
 
 		printf("%0.3f\t%0.3f\n", x, y);
 
