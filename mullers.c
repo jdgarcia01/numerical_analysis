@@ -1,13 +1,21 @@
+/************************************************************
+ * Mullers algorithm from "Numerical Analysis 8th edition"  *
+ * Authors: Burden and Faires.                              *
+ *                                                          *
+ *                                                          *
+ ***********************************************************/
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 
 double func(double x){
 
-	return (16 * x * x * x *x - 40 * x *x * x + 5 * x * x + 20 * x + 6);
+	return (x * x * x - 2 * x * x - 5);
 }
 
 int main(){
+
+
 
 	int N0 = 0;
 	printf("Number of iterations:");
@@ -41,6 +49,7 @@ int main(){
 	double b;
 	double D;
 	double E;
+
 	while(i <= N0){
 
 		b = delta2 + h2 * d;
@@ -52,13 +61,16 @@ int main(){
 			E = b - D;
 		}
 		h = (-2 * func(p2)) / E;
+
 		p = p2 + h;
+
 		printf("%lf\n", p );
 
 		if( fabs(h) < TOL){
 			printf("OUTPUT: %lf\n", p);
 			exit(EXIT_SUCCESS);
 		}
+
 		p0 = p1;
 		p1 = p2;
 		p2 = p;

@@ -2,17 +2,18 @@
 #include <math.h>
 
 // ODE to solve.
-double func(double t, double y){
+float func(float t, float y){
 
-	return(y - t * t + 1 );
-
-}
-double exact(double t){
-
-	return( (t + 1)*(t+1) - (0.5) * exp(t));
+	return( cos(2*t) + sin(3 * t));
 
 }
 
+float exact_func(float t, float y){
+
+	return( 1/2 * sin(2 * t) - 1/3 * cos(3 * t) + 4/3 );
+
+
+}
 int main(){
 
 	double a,b,N;
@@ -45,10 +46,8 @@ int main(){
 
 		w = w + h * func(t,w); // compute wi
 		t = a + (i * h);          // compute ti
-		printf(" Approximate t is: %lf w is: %lf\t",t , w);
-		printf(" Exact value is %lf\t",exact(t));
-		printf(" Error is: %lf\n", fabs(exact(t) - w));
-
+		printf(" Approximate t is: %lf w is: %lf\n",t , w);
+		printf(" Exact solution is: %lf\n", func
 	}
 
 	return 0;
